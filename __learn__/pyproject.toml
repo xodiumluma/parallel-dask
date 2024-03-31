@@ -71,3 +71,12 @@ complete = [
     "pyarrow_hotfix",
     "lz4 >= 4.3.2",
 ]
+test = [
+    "pandas[test]",
+    "pytest",
+    "pytest-cov",
+    "pytest-rerunfailures",
+    "pytest-timeout",
+    "pytest-xdist",
+    "pre-commit",
+]
