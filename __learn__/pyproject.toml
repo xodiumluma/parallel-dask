@@ -83,3 +83,14 @@ test = [
 
 [project.entry-points."dask.array.backends"]
 cupy = "dask.array.cupy_entry_point:CupyBackendEntrypoint"
+
+[project.scripts]
+dask = "dask.__main__:main"
+
+[tool.setuptools]
+include-package-data = true
+zip-safe = false
+license-files = [
+    "LICENSE.txt",
+    "dask/array/NUMPY_LICENSE.txt",
+]
