@@ -94,3 +94,9 @@ license-files = [
     "LICENSE.txt",
     "dask/array/NUMPY_LICENSE.txt",
 ]
+
+[tool.setuptools.packages]
+find = {namespaces = false}
+
+[tool.setuptools.package-data]
+dask = ["py.typed"]
