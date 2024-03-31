@@ -43,3 +43,16 @@ dependencies = [
     "importlib_metadata >= 4.13.0; python_version < '3.12' ",
 ]
 dynamic = ["version"]
+
+[project.optional-dependencies]
+# NOTE: `continuous_integration/test_imports.sh` tests these
+# Change the corresponding line if you change these
+array = ["numpy >= 1.21"]
+# backwards compatibility
+bag = []
+dataframe = [
+    "dask[array]",
+    # NOTE: pandas>2 is underpinned by dask-expr; for pandas<2 install dask without using dataframe extra
+    "pandas >= 1.3",
+    "dask-expr >= 1.0, <1.1", # dask version is fixed by dask-expr
+]
