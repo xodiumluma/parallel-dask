@@ -136,5 +136,10 @@ filterwarnings = [
   # https://github.com/numpy/numpy/issues/20225
   'ignore:The distutils\.sysconfig module is deprecated; use sysconfig instead:DeprecationWarning:numpy',
   # Distributed creates a warning when a local IP address is detected (offline)
-  'ignore:Cannot detect a non-local IP address:RuntimeWarning:distributed'
+  'ignore:Cannot detect a non-local IP address:RuntimeWarning:distributed',
+  # Ignore FutureWarning for change in behaviour of group_keys (nothing to do on this dask side)
+  # https://pandas.pydata.org/docs/dev/whatsnew/v1.5.0.html#using-group-keys-with-transformers-in-groupby-apply
+  "ignore:Not prepending group keys:FutureWarning",
+  "ignore:.*:dask.tests.warning_aliases.RemovedIn20Warning",
+
 ]
