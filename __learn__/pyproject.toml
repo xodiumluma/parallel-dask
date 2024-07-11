@@ -141,5 +141,6 @@ filterwarnings = [
   # https://pandas.pydata.org/docs/dev/whatsnew/v1.5.0.html#using-group-keys-with-transformers-in-groupby-apply
   "ignore:Not prepending group keys:FutureWarning",
   "ignore:.*:dask.tests.warning_aliases.RemovedIn20Warning",
+  "ignore:When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas:FutureWarning",
 
 ]
