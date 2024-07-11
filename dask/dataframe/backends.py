@@ -734,6 +734,8 @@ def get_grouper_pandas(obj):
 
 @percentile_lookup.register((pd.Series, pd.Index))
 def percentile(a, q, interpolation="linear"):
+    if isinstance(a.dtype, pd.ArrowDtype):
+        a = a.to_numpy()
     return _percentile(a, q, interpolation)
 
 
@@ -771,13 +773,15 @@ dataframe_creation_dispatch.register_backend("pandas", PandasBackendEntrypoint()
 
 
 @concat_dispatch.register_lazy("cudf")
-@hash_object_dispatch.register_lazy("cudf")
+@from_pyarrow_table_dispatch.register_lazy("cudf")
 @group_split_dispatch.register_lazy("cudf")
 @get_parallel_type.register_lazy("cudf")
+@hash_object_dispatch.register_lazy("cudf")
 @meta_nonempty.register_lazy("cudf")
 @make_meta_dispatch.register_lazy("cudf")
 @make_meta_obj.register_lazy("cudf")
 @percentile_lookup.register_lazy("cudf")
+@to_pyarrow_table_dispatch.register_lazy("cudf")
 @tolist_dispatch.register_lazy("cudf")
 def _register_cudf():
     import dask_cudf  # noqa: F401

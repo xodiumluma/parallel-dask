@@ -72,6 +72,7 @@ DataFrame
     DataFrame.mean
     DataFrame.median
     DataFrame.median_approximate
+    DataFrame.melt
     DataFrame.memory_usage
     DataFrame.memory_usage_per_partition
     DataFrame.merge
@@ -130,6 +131,7 @@ DataFrame
     DataFrame.to_hdf
     DataFrame.to_html
     DataFrame.to_json
+    DataFrame.to_legacy_dataframe
     DataFrame.to_parquet
     DataFrame.to_records
     DataFrame.to_string
@@ -526,6 +528,18 @@ Convert DataFrames
    DataFrame.to_dask_array
    DataFrame.to_delayed
 
+
+Convert from/to legacy DataFrames
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. currentmodule:: dask_expr._collection
+
+.. autosummary::
+   :toctree: generated/
+
+   DataFrame.to_legacy_dataframe
+   from_legacy_dataframe
+
 Reshape DataFrames
 ~~~~~~~~~~~~~~~~~~
 
@@ -536,6 +550,7 @@ Reshape DataFrames
 
    get_dummies
    pivot_table
+   melt
 
 Concatenate DataFrames
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -546,9 +561,9 @@ Concatenate DataFrames
    :toctree: generated/
 
    DataFrame.merge
-   dask_expr.concat
-   dask_expr.merge
-   dask_expr.merge_asof
+   concat
+   merge
+   merge_asof
 
 
 Resampling
@@ -588,6 +603,19 @@ Dask Metadata
    :toctree: generated/
 
    make_meta
+
+
+Query Planning and Optimization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. currentmodule:: dask_expr._collection
+
+.. autosummary::
+   :toctree: generated/
+
+   DataFrame.explain
+   DataFrame.visualize
+   DataFrame.analyze
 
 Other functions
 ~~~~~~~~~~~~~~~

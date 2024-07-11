@@ -36,12 +36,7 @@ def _percentile(a, q, method="linear"):
     if np.issubdtype(a.dtype, np.datetime64):
         values = a
         if type(a).__name__ in ("Series", "Index"):
-            from dask.dataframe._compat import PANDAS_GE_200
-
-            if PANDAS_GE_200:
-                a2 = values.astype("i8")
-            else:
-                a2 = values.view("i8")
+            a2 = values.astype("i8")
         else:
             a2 = values.view("i8")
         result = np_percentile(a2, q, method=method).astype(values.dtype)
@@ -83,7 +78,7 @@ def percentile(a, q, method="linear", internal_method="default", **kwargs):
         0 and 100 inclusive.
     method : {'linear', 'lower', 'higher', 'midpoint', 'nearest'}, optional
         The interpolation method to use when the desired percentile lies
-        between two data points ``i < j``. Only valid for ``method='dask'``.
+        between two data points ``i < j``. Only valid for ``internal_method='dask'``.
 
         - 'linear': ``i + (j - i) * fraction``, where ``fraction``
           is the fractional part of the index surrounded by ``i``
